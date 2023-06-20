@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,16 +14,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PostController::class, 'index']);
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('post-detail');
+
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
+
+
+Route::group(['prefix' => 'dashboard', 'middleware' => [ 'auth:sanctum',  config('jetstream.auth_session'),
+'verified'] ], function () {
+    Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    // Route::get('post/add', NewPost::class)->name('new-post');
+
+    // Route::get('post/upload/{id}', 
+        // FeaturedImageUpload::class
+    // )->name('upload-featured-image');
+
+    Route::get('post/edit/{id}', function ($id) {
+        return view('dashboard');
+    })->name('edit-post');
 });
