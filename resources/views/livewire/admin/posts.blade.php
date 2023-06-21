@@ -24,7 +24,7 @@
             <div class="flex items-center">
             
                 <h2 class="ml-3 text-xl font-semibold text-gray-900">
-                    <a href="https://laravel.com/docs">{{ $post->title }}</a>
+                    <a href="{{route('post-detail', $post->id)}}">{{ $post->title }}</a>
                 </h2>
             </div>
 

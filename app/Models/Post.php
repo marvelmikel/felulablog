@@ -42,7 +42,7 @@ class Post extends Model
 
     public function getFeaturedImageUrlAttribute() {
 
-        return  Storage::disk('public')->url('images/'. $this->featured_image );
+        return  Storage::disk('public')->url('images/'. $this->getAttributes()['featured_image'] );
     }
 
 }

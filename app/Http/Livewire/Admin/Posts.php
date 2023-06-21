@@ -24,6 +24,8 @@ class Posts extends Component
     {
         $post = Post::find($id);
         if($post->featured_image) unlink(storage_path("app/public/images/".$post->featured_image)) ;
+
+        // Storage::disk($storageDisk)->delete($media->path);
         $post->delete();
         session()->flash("message", "Post has been deleted");
     }

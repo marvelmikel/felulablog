@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Livewire\Admin\CreatePost;
 use App\Http\Livewire\Admin\EditPost;
 use App\Http\Livewire\Admin\FeaturedImageUpload;
+use App\Http\Livewire\CreateUserPost;
+use App\Http\Livewire\EditUserPost;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,12 +27,15 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('post-detail'
 
 Route::group(['prefix' => 'user', 'middleware' => [ 'auth:sanctum',  config('jetstream.auth_session'), 'verified'] ], function () {
     Route::get('/', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('post/create', CreateUserPost::class )->name('user.createpost');
+    Route::get('post/edit/{id}', EditUserPost::class)->name('user.edit-post');
+    Route::get('post/upload/{id}',FeaturedImageUpload::class)->name('user.upload-featured-image');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => [ 'auth:sanctum', 'admin',  config('jetstream.auth_session'), 'verified'] ], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('post/create', CreatePost::class )->name('admin.createpost');
     Route::get('post/edit/{id}', EditPost::class)->name('admin.edit-post');
-    Route::get('post/upload/{id}',FeaturedImageUpload::class)->name('upload-featured-image');
+    Route::get('post/upload/{id}',FeaturedImageUpload::class)->name('admin.upload-featured-image');
 
 });

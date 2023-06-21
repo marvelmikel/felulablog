@@ -40,10 +40,8 @@
             @if(Auth::user())
                 @if(Auth::user()->role == 'Admin')
                     <a href="{{ route('admin.dashboard') }}" class="block ml-10 mt-4 md:inline-block md:mt-0 font-medium text-gray-700 hover:text-teal-600 text-base mr-4">Dashboard</a>
-                @elseif(Auth::user()->role == 'Publisher')
-                    <a href="{{ route('publisher.dashboard') }}" class="block ml-10 mt-4 md:inline-block md:mt-0 font-medium text-gray-700 hover:text-teal-600 text-base mr-4">Publish</a>
                 @else
-                    <a href="{{ route('publisher.dashboard') }}" class="block ml-10 mt-4 md:inline-block md:mt-0 font-medium text-gray-700 hover:text-teal-600 text-base mr-4">Profile</a>
+                    <a href="{{ route('user.dashboard') }}" class="block ml-10 mt-4 md:inline-block md:mt-0 font-medium text-gray-700 hover:text-teal-600 text-base mr-4">Dashboard</a>
                 @endif
             @else
                 <a href="{{ route('login') }}" class="block ml-10 mt-4 md:inline-block md:mt-0 font-medium text-gray-700 hover:text-teal-600 text-base mr-4">Login</a>
