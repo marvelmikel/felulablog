@@ -10,6 +10,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -19,7 +20,20 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
+            public function toResponse($request)
+            {
+                if(Auth()->user()->role == 'Publisher' ){
+                    return redirect()->route('publisher.dashboard');
+                }
+                if(Auth()->user()->role == 'Admin' ){
+                    return redirect()->route('admin.dashboard');
+                }
+                // return redirect()->route('home');
+            }
+        });
+
     }
 
     /**

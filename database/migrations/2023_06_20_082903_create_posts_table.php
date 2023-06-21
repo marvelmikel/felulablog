@@ -20,7 +20,7 @@ return new class extends Migration
             $table->longText('body');
             $table->string('title');
             $table->boolean('is_published')->default(false);
-            $table->string('featured_image');
+            $table->string('featured_image')->nullable();
             $table->dateTime('published_date');
             $table->timestamps();
 

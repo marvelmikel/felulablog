@@ -24,6 +24,8 @@ class Post extends Model
         'is_published'
     ];
 
+    public $appends = ['featured_image_url'];
+
     /**
      * Returns the user for this post
      */
@@ -38,10 +40,9 @@ class Post extends Model
         return $this->belongsTo(Category::class)->withDefault();
     }
 
-    public function getFeaturedImageAttribute() {
+    public function getFeaturedImageUrlAttribute() {
 
-        return  Storage::disk('public')->url('images/'. $this->getAttributes()['featured_image'] );
-        // Storage::disk('default')->get($this->featured_image)->url();
+        return  Storage::disk('public')->url('images/'. $this->featured_image );
     }
 
 }

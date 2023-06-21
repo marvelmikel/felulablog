@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
+            'role' => 'User',
         ]);
 
         \App\Models\User::updateOrCreate(['email' => 'usertwo@felulablog.com'],[
@@ -35,9 +36,10 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
+            'role' => 'User',
         ]);
 
-        \App\Models\User::updateOrCreate(['email' => 'userthree@felulablog.com'],[
+        \App\Models\User::updateOrCreate(['email' => 'publisher@felulablog.com'],[
             'name' => 'User Three',
             'email' => 'userthree@felulablog.com',
             'email_verified_at' => now(),
@@ -47,6 +49,7 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
+            'role' => 'Publisher',
         ]);
 
 
@@ -60,6 +63,7 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
+            'role' => 'Admin',
         ]);
     }
 }
