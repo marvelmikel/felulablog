@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,
-            'role' => 'Publisher',
+            'role' => 'User',
         ]);
 
 

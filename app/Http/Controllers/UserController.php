@@ -6,7 +6,7 @@ use App\Models\Post;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
-class PublisherController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class PublisherController extends Controller
     public function index()
     {
         $posts = Post::paginate(15);
-        return view('publisher.dashboard', compact('posts'));
+        return view('user.dashboard', compact('posts'));
     }
 
 
