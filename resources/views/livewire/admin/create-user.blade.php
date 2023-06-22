@@ -23,7 +23,7 @@
                         <x-input-error for="user.email" />
                     </div>
 
-                    <div class="col-span-6 sm:col-span-3">
+                    <div  class="col-span-6 sm:col-span-3 {{ isset($isEdit) && $isEdit ? 'hidden': ''  }}">
                         <x-label>
                             {{ __("Password") }}
                         </x-label>

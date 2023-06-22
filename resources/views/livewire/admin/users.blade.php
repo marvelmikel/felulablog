@@ -32,7 +32,7 @@
             </p>
 
             <div class="mt-4 text-sm flex justify-center space-x-2">
-                <a href="{{ route('admin.edit-post', $user->id) }}"
+                <a href="{{ route('admin.edit-user', $user->id) }}"
                     class="bg-blue-600 px-2 py-1.5 text-xs rounded text-white">Edit</a>
                 
                 <button class="p-1 text-xs text-gray-100 bg-red-600 rounded-sm"

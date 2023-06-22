@@ -1,4 +1,4 @@
-<?php
+<?php //tall-blog/app/Http/Livewire/Dashboard/EditPost.php
 
 namespace App\Http\Livewire\Admin;
 
@@ -6,14 +6,14 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
-class CreateUser extends Component
+class EditUser extends Component
 {
     public $user;
+    public $isEdit = true;
 
     protected $rules = [
-        'user.name' => 'required|string',
-        'user.email' => 'email|unique:users,email',
-        'user.password' => 'required|string' 
+        'user.name' => 'sometimes|string',
+        'user.email' => 'sometimes|email',
     ];
 
     protected $messages = [
@@ -28,14 +28,18 @@ class CreateUser extends Component
         return view('livewire.admin.create-user');
     }
 
+    public function mount($id)
+    {
+        $this->user = User::find($id);
+    }
+
     public function save()
     {
         $this->validate();
-        $user = User::create([
-            'name' => $this->user['name'],
-            'email' => $this->user['email'],
-            'password' => Hash::make($this->user['password']),
-        ]);
+        $this->user->save();
+        session()->flash("message", "User updated successfully");
         return redirect()->route('admin.users');
     }
+
+    
 }

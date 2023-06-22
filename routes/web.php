@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Livewire\Admin\CreatePost;
 use App\Http\Livewire\Admin\CreateUser;
 use App\Http\Livewire\Admin\EditPost;
+use App\Http\Livewire\Admin\EditUser;
 use App\Http\Livewire\FeaturedImageUpload;
 use App\Http\Livewire\CreateUserPost;
 use App\Http\Livewire\EditUserPost;
@@ -43,6 +44,7 @@ Route::group(['prefix' => 'admin', 'middleware' => [ 'auth:sanctum', 'admin',  c
 
     Route::get('users', [AdminController::class, 'getUsers'])->name('admin.users');
     Route::get('users/create', CreateUser::class )->name('admin.createuser');
+    Route::get('users/edit/{id}', EditUser::class)->name('admin.edit-user');
 
 
 });
