@@ -1,14 +1,14 @@
 <h2>Felula Blog system Build with TALL STACK</h2>
 Steps to run the project on local machine, kindly run commands below on the terminal of the root directory of the project
-1. "composer install"
-2. "cp .env.example .env"
-3. "php artisan key:generate"
-4. create a database connection
-5. "php artisan migrate"
-6. "php artisan db:seed"
-7. "php artisan storage: link"
-8. "npm install"
-9. "npm run dev"
+1. "composer install" <br>
+2. "cp .env.example .env" <br>
+3. "php artisan key:generate" <br>
+4. create a database connection <br>
+5. "php artisan migrate" <br>
+6. "php artisan db:seed" <br>
+7. "php artisan storage: link" <br>
+8. "npm install" <br>
+9. "npm run dev" <br>
   Congratulation project should be running successfull
 
   User Login Detail
