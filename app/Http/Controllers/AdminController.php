@@ -19,5 +19,16 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('posts'));
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Renderable
+     */
+    public function getUsers()
+    {
+        $posts = Post::paginate(15);
+        return view('admin.users', compact('posts'));
+    }
+
 
 }

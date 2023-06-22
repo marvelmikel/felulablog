@@ -31,7 +31,7 @@ class CreatePost extends Component
         return view('livewire.admin.create-post');
     }
 
-    public function mount($id)
+    public function mount()
     {
         $this->categories =  \App\Models\Category::all();
     }
