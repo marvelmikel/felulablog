@@ -19,6 +19,12 @@ return new class extends Migration
             $table->string('excerpt');
             $table->longText('body');
             $table->string('title');
+
+            $table->string('link')->nullable();
+            $table->string('source')->nullable();
+            $table->string('author')->nullable();
+            $table->boolean('is_rss')->default(false);
+
             $table->boolean('is_published')->default(false);
             $table->string('featured_image')->nullable();
             $table->dateTime('published_date')->nullable();

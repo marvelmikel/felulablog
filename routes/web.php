@@ -47,4 +47,6 @@ Route::group(['prefix' => 'admin', 'middleware' => [ 'auth:sanctum', 'admin',  c
     Route::get('users/edit/{id}', EditUser::class)->name('admin.edit-user');
 
 
+    Route::get('feeds', [AdminController::class, 'getFeeds'])->name('admin.feeds');
+
 });

@@ -18,6 +18,12 @@ class Post extends Model
         'title', 
         'excerpt', 
         'body', 
+
+        'link',
+        'author',
+        'source',
+        'is_rss',
+
         'category_id',
         'featured_image', 
         'published_date',

@@ -20,6 +20,10 @@
                         <x-nav-link href="{{ route('admin.users') }}" :active="request()->routeIs('admin.users')">
                             {{ __('Users') }}
                         </x-nav-link>
+
+                        <x-nav-link href="{{ route('admin.feeds') }}" :active="request()->routeIs('admin.feeds')">
+                            {{ __('RSS') }}
+                        </x-nav-link>
                     @else
                         <x-nav-link href="{{ route('user.dashboard') }}" :active="request()->routeIs('user.dashboard')">
                             {{ __('Dashboard') }}
