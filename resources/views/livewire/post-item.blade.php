@@ -13,7 +13,7 @@
         </h3>
         <p class="text-gray-800">
             <a href="{{ route('post-detail', $post->id ) }}">
-                {{ $post->body }}
+                {!! $post->body !!}
             </a>
         </p>
 

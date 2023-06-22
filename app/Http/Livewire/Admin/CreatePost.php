@@ -10,13 +10,12 @@ class CreatePost extends Component
     public $post;
     public $categories;
 
+    public $body;
+
     protected $rules = [
         'post.title' => 'required|string',
-        'post.category' => 'required',
-        // 'post.body' => 'required|string|min:500',
-        'post.body' => 'required|string',
+        'post.category_id' => 'required',
         'post.excerpt' => 'required',
-        // 'post.excerpt' => 'required|min:100|max:250',
         'post.is_published' => 'boolean'
     ];
 
@@ -31,10 +30,13 @@ class CreatePost extends Component
         return view('livewire.admin.create-post');
     }
 
-    public function mount()
+    public function mount($value = '')
     {
         $this->categories =  \App\Models\Category::all();
+        $this->body = $value;
     }
+
+    
 
     public function save()
     {
@@ -43,11 +45,11 @@ class CreatePost extends Component
         $post = Post::create([
             'title' => $this->post['title'],
             'excerpt' => $this->post['excerpt'],
-            'category' => $this->post['category'],
-            'body' => $this->post['body'],
+            'category_id' => $this->post['category_id'],
+            'body' => $this->body,
             'published_date' => now(),
             'user_id' => Auth()->user()->id,
-            'is_published' => $this->post['is_published']
+            'is_published' => true
         ]);
 
         $id = $post->save();

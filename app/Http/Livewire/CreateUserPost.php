@@ -10,10 +10,11 @@ class CreateUserPost extends Component
     public $post;
     public $categories;
 
+    public $body;
+
     protected $rules = [
         'post.title' => 'required|string',
         'post.category_id' => 'required',
-        'post.body' => 'required|string',
         'post.excerpt' => 'required',
     ];
 
@@ -28,8 +29,10 @@ class CreateUserPost extends Component
         return view('livewire.create-post');
     }
 
-    public function mount(){
+    public function mount($value = '')
+    {
         $this->categories =  \App\Models\Category::all();
+        $this->body = $value;
     }
 
     public function save()
@@ -40,8 +43,9 @@ class CreateUserPost extends Component
             'title' => $this->post['title'],
             'excerpt' => $this->post['excerpt'],
             'category_id' => $this->post['category_id'],
-            'body' => $this->post['body'],
-            // 'published_date' => now(),
+            'body' => $this->body,
+            'published_date' => now(),
+            'is_published' => true,
             'user_id' => Auth()->user()->id
         ]);
 

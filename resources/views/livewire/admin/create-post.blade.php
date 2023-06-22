@@ -1,4 +1,6 @@
-@include('partials.tinymceconfig', ['element' => 'body'])
+@push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" />
+@endpush
 <div class="p-4 mx-auto mt-3 bg-gray-100 md:p-8 md:w-4/5 md:mt-0">
     <h1 class="mb-3 text-xl font-semibold text-gray-600">
         {{ isset($isEdit) ? "Edit post": "New post" }}
@@ -26,12 +28,12 @@
                 </div>
                 <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-3">
-                        <x-label for="category" class="block text-sm font-medium text-gray-700">
+                        <x-label for="category_id" class="block text-sm font-medium text-gray-700">
                             {{ __("Category") }}
                         </x-label>
-                        <select class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"  id="category" wire:model="post.category_id"">
+                        <select class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"  id="category_id" wire:model="post.category_id"">
                             @foreach($categories as $category)
-                                <option value="{{$category->name}}"">{{  $category->name  }}</option>
+                                <option value="{{$category->id}}"">{{  $category->name  }}</option>
                             @endforeach
                         </select>
                         <x-input-error for="post.category_id" />
@@ -49,7 +51,11 @@
                     <x-label for="body">
                         {{ __("Body") }}
                     </x-label>
-                    <textarea id="body" rows="4" wire:model="post.body"  class="border-gray-300 rounded-sm form-textarea"></textarea>
+                    <!-- Tiny mce has issue with tailwind - there's actually a work around -->
+                    <!-- <textarea id="body" rows="4" wire:model="post.body"  class="border-gray-300 rounded-sm form-textarea"></textarea> -->
+                  
+                    <input id="x" value="Editor content goes here" type="hidden" name="content">
+                    <trix-editor input="x"></trix-editor>
                     <x-input-error for="post.body" />
                 </div>
             </div>
@@ -61,3 +67,18 @@
         </div>
     </form>
 </div>
+
+<!-- include('partials.tinymceconfig', ['element' => 'body']) -->
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
+
+    <script>
+        var trixEditor = document.getElementById("x")
+
+        addEventListener("trix-blur", function(event) {
+            @this.set('body', trixEditor.getAttribute('value'))
+        })
+    </script>
+
+@endpush
+
