@@ -13,10 +13,20 @@ class UserPosts extends Component
 
     public function render()
     {
-        $userId = Auth::user()->id;;
-        $posts = Post::where('id', $userId)->paginate(10);
+        $userId = Auth::user()->id;
+        $posts = Post::where('user_id', $userId)->paginate(10);
         return view('livewire.user-posts', 
                 ['posts' => $posts]
             );
+    }
+
+    public function delete(int $id)
+    {
+        $post = Post::find($id);
+        if($post->featured_image) unlink(storage_path("app/public/images/".$post->featured_image)) ;
+
+        // Storage::disk($storageDisk)->delete($media->path);
+        $post->delete();
+        session()->flash("message", "Post has been deleted");
     }
 }

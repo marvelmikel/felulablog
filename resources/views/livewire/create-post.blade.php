@@ -28,29 +28,21 @@
                         <x-label for="category" class="block text-sm font-medium text-gray-700">
                             {{ __("Category") }}
                         </x-label>
-                        <select class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"  id="category" wire:model="post.category_id"">
+
+                        <select class="w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"  id="category_id" wire:model="post.category_id"">
                             @foreach($categories as $category)
-                                <option value="{{$category->name}}"">{{  $category->name  }}</option>
+                                <option value="{{$category->id}}"">{{  $category->name  }}</option>
                             @endforeach
                         </select>
                         <x-input-error for="post.category_id" />
                     </div>
-                    <div class="col-span-6 mt-4 sm:col-span-1">
-                        <x-label class="text-sm font-medium text-gray-700">
-                            <x-input wire:model="post.is_published" type="checkbox" 
-                              class="form-checkbox" />
-                            {{ __("Publish") }}
-                        </x-label>
-                        <x-input-error for="post.is_published" />
-                    </div>
+                   
                 </div>
                 <div class="flex flex-col">
                     <x-label for="body">
                         {{ __("Body") }}
                     </x-label>
-                    <textarea id="body" rows="4" wire:model="post.body" 
-                       ﻿class="border-gray-300 rounded-sm form-textarea">
-                    ﻿</textarea>
+                    <textarea id="body" rows="4" wire:model="post.body" class=" form-textarea border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm "></textarea>
                     <x-input-error for="post.body" />
                 </div>
             </div>

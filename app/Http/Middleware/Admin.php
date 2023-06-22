@@ -17,14 +17,14 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if( !Auth()->user()->role == 'Admin' ){
+        if( Auth()->user()->role != 'Admin' ){
            if( $request->isJson()){
                 return response()->json([
                     'status' => 'error',
                     'message' => 'You are not allowed to perform this action',
                 ], 401);
            }else{
-                return redirect()->route('home')->with('error', 'Access Denied');
+                return redirect()->route('user.dashboard')->with('error', 'Access Denied');
            }
         }
 

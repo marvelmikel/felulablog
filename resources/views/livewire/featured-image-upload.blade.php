@@ -4,7 +4,7 @@
         <div class="bg-white rounded shadow">
             @if (session()->has('message'))
                 <div class="p-2 m-2 text-green-900 bg-green-600 bg-opacity-25 rounded-md">
-                    {{ session('message') }} <a href="{{ route('admin.createpost') }}">Add another one</a>
+                    {{ session('message') }} 
                 </div>
             @endif
             <div class="p-8">

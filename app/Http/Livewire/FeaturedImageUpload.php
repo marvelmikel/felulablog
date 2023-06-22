@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire;
 
 use App\Models\Post;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -26,7 +27,7 @@ class FeaturedImageUpload extends Component
 
     public function render()
     {
-        return view('livewire.admin.featured-image-upload');
+        return view('livewire.featured-image-upload');
     }
 
     public function upload()
@@ -47,5 +48,10 @@ class FeaturedImageUpload extends Component
         $this->post->save();
 
         session()->flash("message", "Featured image successfully uploaded");
+
+        if(Auth::user()->role == 'Admin'){
+            return redirect()->route('admin.dashboard');
+        }
+        return redirect()->route('user.dashboard');
     }
 }

@@ -20,12 +20,20 @@
 
     <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
         @foreach ($posts as $post)
-        <div>
+        <div class="shadow-sm bg-white p-5">
             <div class="flex items-center">
-            
-                <h2 class="ml-3 text-xl font-semibold text-gray-900">
+                <h2 class=" text-xl font-semibold text-gray-900">
                     <a href="{{route('post-detail', $post->id)}}">{{ $post->title }}</a>
                 </h2>
+            </div>
+            
+            <div class="my-4 flex justify-between">
+                <span><b>Author:</b> John Doe</span>
+                @if($post->is_published)
+                    <span><b>Published: </b>{{ $post->published_date->diffForHumans() }}</span>
+                @else
+                    <span><b>Created: </b>{{ $post->created_at->diffForHumans() }}</span>
+                @endif
             </div>
 
             <p class="mt-4 text-gray-500 text-sm leading-relaxed">
@@ -35,13 +43,15 @@
             <p class="mt-4 text-sm">
                 <a href="{{ route('admin.edit-post', $post->id) }}"
                     class="bg-blue-600 px-2 py-1.5 text-xs rounded text-white">Edit</a>
-                <button class="p-1 text-xs text-gray-100 bg-yellow-700 rounded-sm" wire:click="publish({{ $post->id }})">
-                    {{ !$post->is_published ? "Publish" : "Unpublish" }}
+                <button class="p-1 text-xs text-gray-100  rounded-smn {{ $post->is_published ? 'bg-green-700' : 'bg-yellow-500'   }}" wire:click="publish({{ $post->id }})" >
+                    {{ $post->is_published ? "Unpublish" : "Publish" }}
                 </button>
                 <button class="p-1 text-xs text-gray-100 bg-red-600 rounded-sm"
                 wire:click="delete({{ $post->id }})">
                     Delete
                 </button>
+
+              
                 
             </p>
         </div>

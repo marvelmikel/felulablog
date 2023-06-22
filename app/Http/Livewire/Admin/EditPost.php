@@ -8,21 +8,21 @@ use Livewire\Component;
 class EditPost extends Component
 {
     public $post;
+    public $categories;
     public $isEdit = true;
 
     protected $rules = [
-        'post.title' => 'required|string',
-        'post.category' => 'required',
-        // 'post.body' => 'required|string|min:500',
-        'post.body' => 'required',
-        // 'post.excerpt' => 'required|min:100|max:250',
-        'post.excerpt' => 'required',
-        'post.is_published' => 'boolean',
+        'post.title' => 'sometimes|string',
+        'post.category_id' => 'sometimes',
+        'post.body' => 'sometimes',
+        'post.excerpt' => 'sometimes|string',
+        'post.is_published' => 'sometimes|boolean',
     ];
 
     public function mount($id)
     {
         $this->post = Post::find($id);
+        $this->categories =  \App\Models\Category::all();
     }
 
     public function render()
@@ -34,6 +34,7 @@ class EditPost extends Component
     {
         $this->validate();
         $this->post->save();
-        session()->flash("message", "Post update successful");
+        session()->flash("message", "Post updated successful, upload feature image here");
+        return redirect()->route('admin.upload-featured-image', ['id' => $this->post->id]);
     }
 }

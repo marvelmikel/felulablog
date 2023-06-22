@@ -8,10 +8,11 @@ use Livewire\Component;
 class CreateUserPost extends Component
 {
     public $post;
+    public $categories;
 
     protected $rules = [
         'post.title' => 'required|string',
-        'post.category' => 'required',
+        'post.category_id' => 'required',
         'post.body' => 'required|string',
         'post.excerpt' => 'required',
     ];
@@ -24,7 +25,11 @@ class CreateUserPost extends Component
 
     public function render()
     {
-        return view('livewire.admin.create-post');
+        return view('livewire.create-post');
+    }
+
+    public function mount(){
+        $this->categories =  \App\Models\Category::all();
     }
 
     public function save()
@@ -34,13 +39,13 @@ class CreateUserPost extends Component
         $post = Post::create([
             'title' => $this->post['title'],
             'excerpt' => $this->post['excerpt'],
-            'category' => $this->post['category'],
+            'category_id' => $this->post['category_id'],
             'body' => $this->post['body'],
-            'published_date' => now(),
+            // 'published_date' => now(),
             'user_id' => Auth()->user()->id
         ]);
 
         $id = $post->save();
-        return redirect()->to(route('upload-featured-image', ['id' => $id]));
+        return redirect()->route('user.upload-featured-image', ['id' => $post->id]);
     }
 }

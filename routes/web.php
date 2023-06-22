@@ -5,7 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Admin\CreatePost;
 use App\Http\Livewire\Admin\EditPost;
-use App\Http\Livewire\Admin\FeaturedImageUpload;
+use App\Http\Livewire\FeaturedImageUpload;
 use App\Http\Livewire\CreateUserPost;
 use App\Http\Livewire\EditUserPost;
 use Illuminate\Support\Facades\Route;

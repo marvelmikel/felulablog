@@ -26,6 +26,10 @@ class Post extends Model
 
     public $appends = ['featured_image_url'];
 
+    public $casts = [
+        'published_date' => 'date'
+    ];
+
     /**
      * Returns the user for this post
      */

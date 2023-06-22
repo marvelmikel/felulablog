@@ -8,6 +8,7 @@ use Livewire\Component;
 class CreatePost extends Component
 {
     public $post;
+    public $categories;
 
     protected $rules = [
         'post.title' => 'required|string',
@@ -30,6 +31,11 @@ class CreatePost extends Component
         return view('livewire.admin.create-post');
     }
 
+    public function mount($id)
+    {
+        $this->categories =  \App\Models\Category::all();
+    }
+
     public function save()
     {
         $this->validate();
@@ -45,6 +51,6 @@ class CreatePost extends Component
         ]);
 
         $id = $post->save();
-        return redirect()->to(route('upload-featured-image', ['id' => $id]));
+        return redirect()->route('admin.upload-featured-image', ['id' => $post->id]);
     }
 }
