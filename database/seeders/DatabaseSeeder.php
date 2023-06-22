@@ -22,6 +22,12 @@ class DatabaseSeeder extends Seeder
             File::makeDirectory($path, 0777, true, true);
         }   
 
+        $path = storage_path('public/images');
+
+        if(!File::isDirectory($path)){
+            File::makeDirectory($path, 0777, true, true);
+        }   
+
         $this->call([
             UserSeeder::class,
             CategorySeeder::class,
