@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
             'role' => 'User',
         ]);
 
-        \App\Models\User::updateOrCreate(['email' => 'publisher@felulablog.com'],[
+        \App\Models\User::updateOrCreate(['email' => 'userthree@felulablog.com'],[
             'name' => 'User Three',
             'email' => 'userthree@felulablog.com',
             'email_verified_at' => now(),
