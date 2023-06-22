@@ -1,11 +1,11 @@
-<div class="text-center">
-    <h2 class="mb-4">Comments</h2>
+<div class="text-left">
+    <h2 class="mb-4"><strong>Comments</strong></h2>
 
-    <div class="comments">
+    <div class="comments" wire:poll="refreshComments">
         @foreach ($comments as $comment)
             <div class="comment">
-                <p><strong>{{ $comment->name }}</strong></p>
-                <p>{{ $comment->comment}}</p>
+                <p>{{ $comment->name }}</p>
+                <p>{{ $comment->comment }}</p>
             </div>
         @endforeach
     </div>
@@ -29,6 +29,14 @@
             @error('comment') <span class="text-red-500">{{ $message }}</span> @enderror
         </div>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Add Comment</button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit Comment</button>
     </form>
 </div>
+
+@push('scripts')
+    <script>
+        window.addEventListener('commentAdded', event => {
+            Livewire.emit('refreshComments');
+        });
+    </script>
+@endpush
