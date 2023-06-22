@@ -79,6 +79,8 @@ class AdminController extends Controller
                     'name' =>  $feed->get_category()
                 ]);
 
+                // $feed->get_thumbnail() ? dd($feed->get_thumbnail()) : null;
+                
                 Post::updateOrCreate(
                     [ 'title' => $feed->get_title()],
                     [
@@ -86,12 +88,14 @@ class AdminController extends Controller
                         'excerpt' => $feed->get_description(),
                         'body' => $feed->get_content(),
                         'link' => $feed->get_link(),
+                        'is_rss' => true,
                         'author' => $feed->get_author(),
                         'source' => $feed->get_source(),
-                        'pub_date' => $feed->get_gmdate() ,
+                        'published_date' => $feed->get_gmdate() ,
+                        'is_published' => true ,
                         'updated_date' => $feed->get_updated_gmdate(),
                         'category_id' => $catogory->id ?? 1,
-                        // 'thumbnail' => $feed->get_thumbnail() ? $feed->get_thumbnail()[0] : null,
+                        'featured_image' => $feed->get_thumbnail() ? $feed->get_thumbnail()['url'] : null,
                     ]
                 );
             }

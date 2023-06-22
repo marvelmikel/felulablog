@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable(); // making it nullable bcos of rss feed posts
             $table->string('category_id')->default(1); // 1 = General
-            $table->longText('excerpt');
-            $table->longText('body');
-            $table->string('title');
+            $table->longText('excerpt')->nullable();
+            $table->longText('body')->nullable();
+            $table->string('title')->nullable();
 
             $table->string('link')->nullable();
             $table->string('source')->nullable();

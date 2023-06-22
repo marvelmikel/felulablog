@@ -1,3 +1,5 @@
+@include('partials.tinymceconfig', ['element' => 'body'])
+
 <div class="p-4 mx-auto mt-3 bg-gray-100 md:p-8 md:w-4/5 md:mt-0">
     <h1 class="mb-3 text-xl font-semibold text-gray-600">
         {{ isset($isEdit) ? "Edit post": "New post" }}

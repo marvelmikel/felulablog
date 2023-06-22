@@ -29,9 +29,6 @@
             <div class="mt-4 text-sm flex justify-center space-x-2">
                 
                 <a href="{{ route('admin.feeds-refresh', $feed->id) }}" class="bg-blue-600 px-2 py-1.5 text-xs rounded text-white">Refresh</a>
-                <button class="p-1 text-xs text-gray-100 bg-green-600 rounded-sm" wire:click="refresh({{ $feed->id }})">
-                    Refresh
-                </button> 
                 <button class="p-1 text-xs text-gray-100 bg-red-600 rounded-sm" wire:click="delete({{ $feed->id }})">
                     Delete
                 </button> 

@@ -31,9 +31,9 @@ class Post extends Model
         'published_date',
         'is_published',
         'post_id',
-         'name', 
-         'email', 
-         'comment'
+        'name', 
+        'email', 
+        'comment'
     ];
 
     public function comments()
@@ -63,7 +63,12 @@ class Post extends Model
 
     public function getFeaturedImageUrlAttribute() {
 
-        return  Storage::disk('public')->url('images/'. $this->getAttributes()['featured_image'] );
+        if($this->is_rss){
+            return  $this->featured_image;
+        }else{
+            return  Storage::disk('public')->url('images/'. $this->getAttributes()['featured_image'] );
+        }
     }
+       
 
 }

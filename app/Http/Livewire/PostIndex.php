@@ -24,6 +24,6 @@ class PostIndex extends Component
     //     //$this->posts = Post::where('is_published', true)->paginate(12);
     // }
     public function render() {
-        return view('livewire.post-index', ['posts' =>  Post::where('is_published', true)->where('title', 'like', '%'.$this->search.'%')->paginate(12) ]);//->layout("layouts/guest");
+        return view('livewire.post-index', ['posts' =>  Post::latest()->where('is_published', true)->where('title', 'like', '%'.$this->search.'%')->paginate(12) ]);//->layout("layouts/guest");
     }
 }
