@@ -13,10 +13,8 @@ class CreateUser extends Component
     protected $rules = [
         'user.title' => 'required|string',
         'user.category' => 'required',
-        // 'user.body' => 'required|string|min:500',
         'user.body' => 'required|string',
         'user.excerpt' => 'required',
-        // 'user.excerpt' => 'required|min:100|max:250',
         'user.is_published' => 'boolean'
     ];
 

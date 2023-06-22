@@ -26,5 +26,10 @@
                <b>Category</b> {{ $post->category->name }}
             </small>
         </div>
+        
+      <!--Comments component-->
+        @livewire('comment-section', ['post' => $post])
     </div>
+    </div>
+   
 </article>

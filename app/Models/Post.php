@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Comment;
+
 
 class Post extends Model
 {
@@ -21,8 +23,17 @@ class Post extends Model
         'category_id',
         'featured_image', 
         'published_date',
-        'is_published'
+        'is_published',
+        'post_id',
+         'name', 
+         'email', 
+         'comment'
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'post_id');
+    }
 
     public $appends = ['featured_image_url'];
 
