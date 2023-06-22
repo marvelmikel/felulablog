@@ -17,15 +17,11 @@
             </a>
         </p>
 
-        <div class="flex mt-10 flex-row justify-between mt-2">
-            <small>
-                <b>Date</b>: {{ $post->published_date }}
-            </small>
+    <div class="flex mt-10 flex-row justify-between mt-2">
+       <small><b>Date</b>: {{ \Carbon\Carbon::parse($post->published_date)->format('F d, Y') }}</small>
+        <small><b>Category</b> {{ $post->category->name }}</small>
+    </div>
 
-            <small>
-               <b>Category</b> {{ $post->category->name }}
-            </small>
-        </div>
         
       <!--Comments component-->
         @livewire('comment-section', ['post' => $post])

@@ -15,14 +15,9 @@ class RssSeeder extends Seeder
     {
         // Sample RSS feeds
         $feeds = [
-            ['name' => 'US general', 'link' => 'http://feeds.abcnews.com/abcnews/usheadlines'],
-            ['name' => 'UK general', 'link' => 'http://rss.cnn.com/rss/cnn_topstories.rss'],
-            ['name' => 'BE general', 'link' => 'http://feeds.abcnews.com/abcnews/usheadlines'],
-            ['name' => 'BG general', 'link' => 'http://rss.cnn.com/rss/cnn_topstories.rss'],
-            ['name' => 'HR general', 'link' => 'http://rss.csmonitor.com/feeds/usa'],
-            ['name' => 'CZ general', 'link' => 'http://feeds.nbcnews.com/feeds/topstories'],
-            ['name' => 'DK general', 'link' => 'http://hosted.ap.org/lineups/USHEADS.rss'],
-            ['name' => 'EE general', 'link' => ' http://online.wsj.com/xml/rss/3_7085.xml'],
+            ['name' => 'US general', 'link' => 'https://www.chron.com/rss/feed/AP-Technology-and-Science-266.php'],
+            ['name' => 'UK general', 'link' => 'https://abcnews.go.com/abcnews/usheadlines'],
+            ['name' => 'BE general', 'link' => 'https://abcnews.go.com/abcnews/usheadlines'],
             // Add more RSS feeds as needed
         ];
 

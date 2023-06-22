@@ -9,7 +9,7 @@
              </a>
              <div class="px-6 py-5">
                  <div class="font-semibold text-lg mb-2"><a class="text-gray-900 hover:text-gray-700" href="{{route('post-detail', $post->id)}}">{{$post->title}}</a></div>
-                 <p class="text-gray-700 my-5" title="Published date">{{ $post->published_date}}</p>
+                 <p class="text-gray-700 my-5" title="Published date"> {{ \Carbon\Carbon::parse($post->published_date)->format('F d, Y') }}</p>
                  <p class="text-gray-800">{!! $post->excerpt !!}</p>
              </div>
 
