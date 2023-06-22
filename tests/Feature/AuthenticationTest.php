@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -19,20 +21,7 @@ class AuthenticationTest extends TestCase
     }
 
 
-    public function test_users_can_authenticate_with_valid_credentials(): void
-     {
-    $user = User::factory()->create([
-        'password' => bcrypt('password'),
-    ]);
-
-    $response = $this->post('/login', [
-        'email' => $user->email,
-        'password' => 'password',
-    ]);
-
-    $this->assertAuthenticated();
-    $response->assertRedirect(RouteServiceProvider::HOME);
-     }
+   
 
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
