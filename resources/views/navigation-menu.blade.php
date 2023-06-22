@@ -24,6 +24,9 @@
                         <x-nav-link href="{{ route('admin.feeds') }}" :active="request()->routeIs('admin.feeds')">
                             {{ __('RSS') }}
                         </x-nav-link>
+                        <x-nav-link href="{{ route('admin.import-csv') }}" :active="request()->routeIs('admin.import-csv')">
+                            {{ __('Import CSV') }}
+                        </x-nav-link>
                     @else
                         <x-nav-link href="{{ route('user.dashboard') }}" :active="request()->routeIs('user.dashboard')">
                             {{ __('Dashboard') }}

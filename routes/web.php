@@ -52,5 +52,8 @@ Route::group(['prefix' => 'admin', 'middleware' => [ 'auth:sanctum', 'admin',  c
     Route::get('feeds', [AdminController::class, 'getFeeds'])->name('admin.feeds');
     Route::get('feeds/create', CreateFeed::class )->name('admin.createfeed');
     Route::get('feeds/refresh/{id}', [AdminController::class, 'refreshFeed'])->name('admin.feeds-refresh');
+    
+    Route::get('import-csv', [AdminController::class, 'getImportCSV'])->name('admin.import-csv');
+    Route::post('import-posts', [AdminController::class, 'importCSV'])->name('admin.import-posts');
 
 });

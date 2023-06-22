@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\PostImport;
 use App\Models\Category;
 use App\Models\Feed;
 use App\Models\Post;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 use Vedmant\FeedReader\Facades\FeedReader;
 
 class AdminController extends Controller
@@ -45,6 +48,7 @@ class AdminController extends Controller
         return view('admin.feeds', compact('feeds'));
     }
 
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -104,5 +108,35 @@ class AdminController extends Controller
     }
 
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Renderable
+     */
+    public function getImportCSV()
+    {
+        return view('admin.import-csv');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return 
+     */
+    public function importCSV(Request $request)
+    {
+        $validate = Validator::make($request->all(), [
+            'file' => 'required|file|mimes:csv,txt'
+        ]);
+
+        if( $validate->fails() ){
+            return redirect()->back()->with('error', 'Invalid file format please upload CSV');
+        }
+
+       
+        // Excel::import(new PostImport, $request->file);
+        Excel::import(new PostImport, $request->file('file')->store('temp'));
+        return redirect()->route('admin.dashboard')->with('message', 'Post Imported Successfully');
+    }
 
 }
