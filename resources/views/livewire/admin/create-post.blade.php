@@ -47,16 +47,14 @@
                         <x-input-error for="post.is_published" />
                     </div>
                 </div>
-                <div class="flex flex-col">
+                <div  wire:ignore class="flex flex-col">
                     <x-label for="body">
                         {{ __("Body") }}
                     </x-label>
                     <!-- Tiny mce has issue with tailwind - there's actually a work around -->
-                    <!-- <textarea id="body" rows="4" wire:model="post.body"  class="border-gray-300 rounded-sm form-textarea"></textarea> -->
+                    <textarea id="body" name="body" rows="4" wire:model="post.body"  class="border-gray-300 rounded-sm form-textarea"></textarea>
                   
-                    <input id="x" value="Editor content goes here" type="hidden" name="content">
-                    <trix-editor input="x"></trix-editor>
-                    <x-input-error for="post.body" />
+
                 </div>
             </div>
             <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
@@ -68,17 +66,24 @@
     </form>
 </div>
 
-<!-- include('partials.tinymceconfig', ['element' => 'body']) -->
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <script>
-        var trixEditor = document.getElementById("x")
-
-        addEventListener("trix-blur", function(event) {
-            @this.set('body', trixEditor.getAttribute('value'))
-        })
+       tinymce.init({
+            selector: '#body',
+            forced_root_block: false,
+            setup: function (editor) {
+                editor.on('init change', function () {
+                    editor.save();
+                });
+                editor.on('change', function (e) {
+                    @this.set('post.body', editor.getContent());
+                });
+            }
+        });
     </script>
-
+   
 @endpush
 

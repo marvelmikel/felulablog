@@ -11,6 +11,8 @@ class EditUserPost extends Component
     public $categories;
     public $isEdit = true;
 
+    public $body;
+
     protected $rules = [
         'post.title' => 'required|string',
         'post.category_id' => 'required',
@@ -19,10 +21,12 @@ class EditUserPost extends Component
         // 'post.is_published' => 'boolean',
     ];
 
-    public function mount($id)
+    public function mount($id, $value = '')
     {
         $this->post = Post::find($id);
         $this->categories =  \App\Models\Category::all();
+        $this->body =  $this->post->body;
+        $this->post->body = $value;
     }
 
     
