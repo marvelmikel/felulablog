@@ -36,7 +36,7 @@
             </div>
 
             <div class="my-4 flex justify-between">
-                <span><b>Author:</b> John Doe</span>
+                <span><b>Blog Posted by </b>{{ $post->user->name }}</span>
                 @if($post->is_published)
                     <span><b>Published: </b>{{ $post->published_date->diffForHumans() }}</span>
                 @else

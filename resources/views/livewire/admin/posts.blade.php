@@ -26,15 +26,24 @@
                     <a href="{{route('post-detail', $post->id)}}">{{ $post->title }}</a>
                 </h2>
             </div>
-            
             <div class="my-4 flex justify-between">
-                <span><b>Author:</b> John Doe</span>
-                @if($post->is_published)
-                    <span><b>Published: </b>{{ $post->published_date->diffForHumans() }}</span>
-                @else
-                    <span><b>Created: </b>{{ $post->created_at->diffForHumans() }}</span>
-                @endif
-            </div>
+           <span><b>Blog Posted by </b>{{ $post->user->name }}</span>
+              @if($post->is_published)
+        @if($post->published_date)
+            <span><b>Published: </b>{{ $post->published_date->diffForHumans() }}</span>
+        @else
+            <span><b>Published: </b>N/A</span>
+        @endif
+    @else
+        @if($post->created_at)
+            <span><b>Created: </b>{{ $post->created_at->diffForHumans() }}</span>
+        @else
+            <span><b>Created: </b>N/A</span>
+        @endif
+    @endif
+</div>
+
+          
 
             <p class="mt-4 text-gray-500 text-sm leading-relaxed">
                 {{ $post->excerpt }}

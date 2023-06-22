@@ -8,13 +8,24 @@
              <img class="w-full h-60 m-0 rounded-t lazy" src="{{ $post->featured_image_url }}"  alt="This post thumbnail">
              </a>
              <div class="px-6 py-5">
-                 <div class="font-semibold text-lg mb-2"><a class="text-gray-900 hover:text-gray-700" href="{{route('post-detail', $post->id)}}">{{$post->title}}</a></div>
-                 <p class="text-gray-700 my-5" title="Published date"> {{ $post->published_date->diffForHumans() }}</p>
-                 <p class="text-gray-700 my-5" title="Author"><strong>Blog Posted by</strong>
-                 {{ $post->user->name }}
-                </p>
-                 <p class="text-gray-800">{!! $post->excerpt !!}</p>
-             </div>
+    <div class="font-semibold text-lg mb-2">
+        <a class="text-gray-900 hover:text-gray-700" href="{{ route('post-detail', $post->id) }}">
+            {{ $post->title }}
+        </a>
+    </div>
+    <p class="text-gray-700 my-5" title="Published date">
+        @if ($post->published_date)
+            {{ $post->published_date->diffForHumans() }}
+        @else
+            Unpublished
+        @endif
+    </p>
+    <p class="text-gray-700 my-5" title="Author">
+        <strong>Blog Posted by</strong> {{ $post->user->name }}
+    </p>
+    <p class="text-gray-800">{!! $post->excerpt !!}</p>
+</div>
+
 
 
            
