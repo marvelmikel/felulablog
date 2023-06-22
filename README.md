@@ -21,6 +21,8 @@ Steps to run the project on local machine, kindly run commands below on the term
   Email:usertwo@felulablog.com <br>
   password: password <br>
 
+  Please Note csv file that is in best format for the database structure is in the  public/postcsv.csv
+
   Kindly click postman button below to check Blog CRUD API Documentation
 
 [![View in Postman Collection](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/19978065/2s93z5A5Dg)
