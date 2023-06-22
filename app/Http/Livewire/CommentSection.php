@@ -40,6 +40,13 @@ class CommentSection extends Component
         $this->emit('commentAdded');
     }
 
+    public function refreshComments()
+    {
+        // This method is called by Livewire's polling feature to refresh the comments section
+        $this->comments = $this->post->comments()->latest()->get();
+    }
+
+
     public function render()
     {
         $comments = $this->post->comments;
