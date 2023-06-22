@@ -5,7 +5,7 @@
 
         <div class="flex flex-row justify-between">
             <h1 class="mt-8 text-2xl font-medium text-gray-900">All Posts!</h1>
-            <a href="{{ route('admin.createpost') }}" class="px-2 py-1 text-white bg-green-700 h-10 rounded">New</a>
+            <a href="{{ route('admin.createpost') }}" class="px-2 py-1 text-white bg-green-700 h-10 rounded">Add New Blog Post</a>
         </div>
 
         <p class="mt-6 text-gray-500 leading-relaxed">
