@@ -29,11 +29,8 @@ class Post extends Model
         'category_id',
         'featured_image', 
         'published_date',
-        'is_published',
-        'post_id',
-        'name', 
-        'email', 
-        'comment'
+        'is_published'
+        
     ];
 
     public function comments()
@@ -66,7 +63,7 @@ class Post extends Model
         if($this->is_rss){
             return  $this->featured_image;
         }else{
-            return  Storage::disk('public')->url('images/'. $this->getAttributes()['featured_image'] );
+            return  $this->featured_image ? Storage::disk('public')->url('images/'. $this->featured_image ) : null;
         }
     }
        
