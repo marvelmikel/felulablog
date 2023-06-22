@@ -100,6 +100,7 @@ class AdminController extends Controller
                         'updated_date' => $feed->get_updated_gmdate(),
                         'category_id' => $catogory->id ?? 1,
                         'featured_image' => $feed->get_thumbnail() ? $feed->get_thumbnail()['url'] : null,
+                        'user_id' => 1
                     ]
                 );
             }
