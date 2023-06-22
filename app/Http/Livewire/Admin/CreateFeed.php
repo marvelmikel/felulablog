@@ -33,6 +33,6 @@ class CreateFeed extends Component
             'name' => $this->feed['name'],
             'link' => $this->feed['link'],
         ]);
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.feeds');
     }
 }

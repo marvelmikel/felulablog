@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Admin\CreateFeed;
 use App\Http\Livewire\Admin\CreatePost;
 use App\Http\Livewire\Admin\CreateUser;
 use App\Http\Livewire\Admin\EditPost;
@@ -48,5 +49,6 @@ Route::group(['prefix' => 'admin', 'middleware' => [ 'auth:sanctum', 'admin',  c
 
 
     Route::get('feeds', [AdminController::class, 'getFeeds'])->name('admin.feeds');
+    Route::get('feeds/create', CreateFeed::class )->name('admin.createfeed');
 
 });

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-
             $table->string('category_id')->default(1); // 1 = General
             $table->string('excerpt');
             $table->longText('body');

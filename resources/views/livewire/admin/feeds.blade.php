@@ -5,7 +5,7 @@
 
         <div class="flex flex-row justify-between">
             <h1 class="mt-8 text-2xl font-medium text-gray-900">All RSS Feeds!</h1>
-            <a href="{{ route('admin.createuser') }}" class="px-2 py-1 text-white bg-green-700 h-10 rounded">New</a>
+            <a href="{{ route('admin.createfeed') }}" class="px-2 py-1 text-white bg-green-700 h-10 rounded">New</a>
         </div>
 
         <p class="mt-6 text-gray-500 leading-relaxed">
