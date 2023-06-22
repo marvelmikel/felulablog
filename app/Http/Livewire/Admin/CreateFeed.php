@@ -18,7 +18,7 @@ class CreateFeed extends Component
 
     protected $messages = [
         'required' => 'This field is required',
-        'unique' => 'The email  is already taken'
+        'unique' => 'The Link  is already exists',
     ];
 
     public function render()

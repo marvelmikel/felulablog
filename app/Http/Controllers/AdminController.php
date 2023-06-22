@@ -66,10 +66,10 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function refresh()
+    public function refreshFeed()
     {
         
-        $rsslinks = Feed::whereActive(1)->pluck('link');
+        $rsslinks = Feed::all()->pluck('link');        
         foreach($rsslinks  as $rss){
             $feeds = FeedReader::read($rss);
 
@@ -96,7 +96,6 @@ class AdminController extends Controller
                 );
             }
         }
-
         return redirect()->back();
     }
 

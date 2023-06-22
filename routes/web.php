@@ -46,9 +46,11 @@ Route::group(['prefix' => 'admin', 'middleware' => [ 'auth:sanctum', 'admin',  c
     Route::get('users', [AdminController::class, 'getUsers'])->name('admin.users');
     Route::get('users/create', CreateUser::class )->name('admin.createuser');
     Route::get('users/edit/{id}', EditUser::class)->name('admin.edit-user');
+    
 
 
     Route::get('feeds', [AdminController::class, 'getFeeds'])->name('admin.feeds');
     Route::get('feeds/create', CreateFeed::class )->name('admin.createfeed');
+    Route::get('feeds/refresh/{id}', [AdminController::class, 'refreshFeed'])->name('admin.feeds-refresh');
 
 });

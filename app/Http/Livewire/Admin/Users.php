@@ -16,7 +16,7 @@ class Users extends Component
         $userId = Auth::user()->id;;
         $users = User::latest()->paginate(10);
         return view('livewire.admin.users', 
-                ['posts' => $users]
+                ['users' => $users]
             );
     }
 
