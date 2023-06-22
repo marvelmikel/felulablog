@@ -13,13 +13,13 @@ Steps to run the project on local machine, kindly run commands below on the term
 
   User Login Detail
 
-  Admin login detail
-  Email:adminone@felulablog.com
-  password:password
+  Admin login detail <br>
+  Email:adminone@felulablog.com <br>
+  password:password <br>
 
-  User login detail
-  Email:usertwo@felulablog.com
-  password: password
+  User login detail <br>
+  Email:usertwo@felulablog.com <br>
+  password: password <br>
 
   Kindly click postman button below to check Blog CRUD API Documentation
 
